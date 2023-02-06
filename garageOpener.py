@@ -10,8 +10,11 @@ DOORS = {
 }
 
 def main(door):
+    l = LED(door)
+    l.on()
     print(door, ' on.')
     sleep(.5)
+    l.off()
     print(door, ' off.')
 
 
