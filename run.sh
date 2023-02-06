@@ -1,2 +1,2 @@
 #!/bin/bash
-~/pers/GaragePi/venv/bin/python3 ~/pers/GaragePi/garageOpener.py 2
+~/garage/venv/bin/python3 ~/garage/garageOpener.py $1
