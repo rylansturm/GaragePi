@@ -1,2 +1,2 @@
 #!/bin/bash
-~/garage/venv/bin/python3 ~/garage/garageOpener.py $1
+echo 'This was changed. TODO: This should run the rust script.'
