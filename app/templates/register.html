@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1>Register</h1>
+    <p>You are creating a new user for RylanSturm.com. This action
+    can only be completed by a current user, and will give the new
+    account access to home automation controls. Be sure that is what
+    you want to do before you do so.</p>
+    <div class="row">
+        <div class="col-md-4">
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
+{% endblock %}
