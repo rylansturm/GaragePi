@@ -6,3 +6,8 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
             'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    # File uploading
+    MAX_CONTENT_LENGTH = 5 * 1024 * 1024
+    UPLOAD_EXTENSIONS = {'.jpg', '.png', '.gif'}
+    UPLOAD_PATH = 'uploads'

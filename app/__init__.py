@@ -31,3 +31,7 @@ if not app.debug:
 
     app.logger.setLevel(logging.INFO)
     app.logger.info('RylanSturm.com startup')
+
+# create uploads folder if needed
+if not os.path.exists(app.config['UPLOAD_PATH']):
+    os.mkdir(app.config['UPLOAD_PATH'])

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>{{ project.name }}</h1>
+    {% if current_user.is_anonymous %}
+    {% else %}
+    <p><a class="btn" href="{{ url_for('new_update', proj_num=project.id) }}">Add Update</a><p>
+    {% endif %}
+    <p>{{ project.desc }}</p>
+
+    {% for update in updates %}
+        {% include '_update.html' %}
+    {% endfor %}
+
+{% endblock %}
