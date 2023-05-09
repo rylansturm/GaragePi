@@ -7,7 +7,10 @@
     Rylan Sturm
     {% endif %}
 {% endblock %}
-
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="static/css/styles.css">
+{% endblock %}
 {% block navbar %}
     <nav class="navbar navbar-default">
         <div class="container">
@@ -21,6 +24,9 @@
                 <a class="navbar-brand" href="{{ url_for('index') }}">Rylan Sturm</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ url_for('about') }}">About Me</a></li>
                     <li><a href="{{ url_for('portfolio') }}">Projects</a></li>
@@ -44,8 +50,39 @@
             {% endfor %}
         {% endif %}
         {% endwith %}
-        {% block app_content %}{% endblock %}
+        <div class="pre-footer-wrapper">{% block app_content %}{% endblock %}</div>
     </div>
 {% block footer %}
+<footer class="bg-light py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>Explore</h5>
+        <ul class="list-unstyled">
+          <li><a href="/">Home</a></li>
+          <li><a href="{{ url_for('portfolio') }}">Portfolio</a></li>
+          <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Connect</h5>
+        <ul class="list-unstyled">
+          <li><a href="https://www.linkedin.com/in/rylan-sturm">LinkedIn</a></li>
+          <li><a href="https://www.github.com/rylansturm">GitHub</a></li>
+        </ul>
+      </div>
+      <!--
+      <div class="col-md-4">
+        <h5>Legal</h5>
+        <ul class="list-unstyled">
+          <li><a href="/terms">Terms and Conditions</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/cookies">Cookie Policy</a></li>
+        </ul>
+      </div>
+      -->
+    </div>
+  </div>
+</footer>
 {% endblock footer %}
 {% endblock content %}

@@ -58,6 +58,10 @@ def register():
 def about():
     return render_template('about.html', title='More About Rylan')
 
+@app.route('/contact')
+def contact():
+    return render_template('contact.html', title='Contact Rylan')
+
 @app.route('/portfolio')
 def portfolio():
     projects = Project.query.all()

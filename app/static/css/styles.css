@@ -1,0 +1,32 @@
+.index-bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 1.5)), url('../background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: right;
+    text-shadow: 2px 2px #000;
+}
+
+html, body {
+    height: 100vh;
+}
+
+.intro-text {
+
+}
+
+.pre-footer-wrapper {
+    min-height: 100%;
+    padding-bottom: 100px;
+}
+
+footer {
+    position: relative;
+    height: 100px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
