@@ -1,24 +1,59 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-<div class="jumbotron index-bg">
+<div class="jumbotron hero hero-right index-bg">
     <h1>Rylan Sturm</h1>
     <p class="lead">
     I'm a software engineer with a love of low-level logic and systematic problem solving
     </p>
     <hr>
-    <p><a class="btn btn-primary btn-lg" href="{{ url_for('portfolio') }}" role="button">Go To Portfolio</a></p>
+    <p><a class="btn btn-primary btn-lg" href="{{ url_for('portfolio') }}" role="button">View Portfolio (WIP)</a></p>
 </div>
-<p>
-    Welcome to my website/portfolio!
-    My name is Rylan and I am a software engineer currently pursuing my Computer Science degree at Utah Valley University.
-    I expect to graduate in 2024.
-    <hr>
-    I am currently working full-time as a quality specialist in manufacturing. I am actively looking for positions in software engineering or software quality.
-    <hr>
-    With my background in manufacturing and quality, I'm passionate about developing high-quality, reliable software that solves real-world problems.
-    Whether you're an employer looking to <a href="https://www.linkedin.com/in/rylan-sturm/">fill a position</a>
-    or just interested in learning more about my work, I'm excited to share my skills and experience with you.
-    <hr>
-    Please don't hesitate to <a href={{ url_for('contact') }}>get in touch</a> - I look forward to hearing from you!
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 vcenter">
+            <div class="index-text">
+                Welcome to my website/portfolio!
+                My name is Rylan and I am a software engineer currently pursuing my Computer Science degree at Utah Valley University.
+                I expect to graduate in 2024.
+            </div>
+        </div>
+        <div class="col-md-6 index-img">
+            <img src="static/ParkCity.jpg">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 index-img">
+            <img src="static/canyoneering.jpg">
+        </div>
+        <div class="col-md-6 vcenter">
+            <div class="index-text">
+                I am currently working full-time as a quality specialist in manufacturing. I am actively looking for positions in software engineering or software quality.
+                With my background in manufacturing and quality, I'm passionate about developing high-quality, reliable software that solves real-world problems.
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 vcenter">
+            <div class="index-text">
+                Whether you're an employer looking to <a href="https://www.linkedin.com/in/rylan-sturm/">fill a position</a>
+                or just interested in learning more about my work, I'm excited to share my skills and experience with you.
+            </div>
+        </div>
+        <div class="col-md-6 index-img">
+            <img src="static/paddleboard.jpg">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+            <div class="index-text">
+                Please don't hesitate to <a href={{ url_for('contact') }}>get in touch</a><hr>I look forward to hearing from you!
+            </div>
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+</div>
 {% endblock %}

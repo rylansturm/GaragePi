@@ -1,11 +1,28 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-{% if current_user.is_anonymous %}
-{% else %}
-<a class="btn" href="{{ url_for('new_project') }}">Create New Project</a><br>
-{% endif %}
-{% for project in projects %}
-<h1><a href="{{ url_for('project', proj_num=project.id) }}">{{ project.name }}</a></h1><br>
-{% endfor %}
+    {% if current_user.is_anonymous %}
+    {% else %}
+        <a class="btn" href="{{ url_for('new_project') }}">Create New Project</a><br>
+    {% endif %}
+        <div class="jumbotron hero hero-left portfolio-bg">
+            <h1>Still Working on it...</h1>
+        </div>
+        <p>
+        I'm working on putting together a portfolio that will function somewhat
+        like a project blog. I've got the backend functionality at "minimum viable product"
+        range, but the layout isn't very pretty yet.
+        <hr>
+        Rest assured, it's going to be sweet! I'm picturing an overview dashboard, then a dashboard
+        for each individual project with update posts and burndown charts. 
+        <hr>
+        I've only been working on this since April 2023, so if you're reading this and its now 2027,
+        I suppose I've failed. And I definitely didn't make those dates dynamically generate to make
+        me look good. (... wait... That's not a bad idea)
+        <p>
+        <hr>
+        <p>ANYWAY here's some projects if you'd like to browse.</p>
+    {% for project in projects %}
+        <h1><a href="{{ url_for('project', proj_num=project.id) }}">{{ project.name }}</a></h1><br>
+    {% endfor %}
 {% endblock %}
