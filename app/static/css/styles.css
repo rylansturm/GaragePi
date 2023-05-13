@@ -20,6 +20,11 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.55)), url('../welcome.jpg');
 }
 
+.contact-bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.55)), url('../contact.jpg');
+    background-attachment: local;
+}
+
 body, html {
     height: 100%;
 }
@@ -54,6 +59,7 @@ body, html {
 
 .portfolio-bg {
     background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.55)), url('../WIP.jpg');
+    background-attachment: local;
 }
 
 .pre-footer-wrapper {
