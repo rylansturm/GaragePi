@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-<div class="jumbotron hero hero-right index-bg">
+<div class="hero hero-right index-bg">
     <h1>Rylan Sturm</h1>
     <p class="lead">
     I'm a software engineer with a love of low-level logic and systematic problem solving
@@ -9,9 +9,9 @@
     <hr>
     <p><a class="btn btn-primary btn-lg" href="{{ url_for('portfolio') }}" role="button">View Portfolio (WIP)</a></p>
 </div>
-<div class="container">
+<div class="container index-content">
     <div class="row">
-        <div class="col-md-6 vcenter">
+        <div class="col-md-6 left-col">
             <div class="index-text">
                 Welcome to my website/portfolio!
                 My name is Rylan, and I am a software engineer currently pursuing my Computer Science degree at Utah Valley University.
@@ -26,18 +26,19 @@
         <div class="col-md-6 index-img">
             <img src="static/canyoneering.jpg">
         </div>
-        <div class="col-md-6 vcenter">
+        <div class="col-md-6 right-col">
             <div class="index-text">
-                I am currently working full-time as a quality specialist in manufacturing. I am actively looking for positions in software engineering or software quality.
+                I am currently working full-time as a quality specialist in manufacturing.
+                I am actively looking for positions in software engineering or software quality.
                 With my background in manufacturing and quality, I'm passionate about developing high-quality, reliable software that solves real-world problems.
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 vcenter">
+        <div class="col-md-6 left-col">
             <div class="index-text">
-                Whether you're an employer looking to <a href="https://www.linkedin.com/in/rylan-sturm/">fill a position</a>
-                or just interested in learning more about my work, I'm excited to share my skills and experience with you.
+                Whether you're an employer looking to fill a position or just interested in learning 
+                more about my work, I'm excited to share my skills and experience with you.
             </div>
         </div>
         <div class="col-md-6 index-img">
@@ -48,8 +49,16 @@
         <div class="col-md-4">
         </div>
         <div class="col-md-4">
-            <div class="index-text">
-                Please don't hesitate to <a href={{ url_for('contact') }}>get in touch</a><hr>I look forward to hearing from you!
+            <div class="cta">
+                <div>
+                    I look forward to hearing from you!
+                </div>
+                <hr>
+                <div>
+                    <a role="button" class="btn btn-primary" href="{{ url_for('contact') }}">
+                        Contact Rylan
+                    </a>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
