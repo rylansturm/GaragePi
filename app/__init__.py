@@ -5,7 +5,7 @@ from logging.handlers import SMTPHandler
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask_bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap5 as Bootstrap
 from logging.handlers import RotatingFileHandler
 import os
 

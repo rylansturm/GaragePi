@@ -150,3 +150,10 @@ def upload(filename):
     print(os.path.join(app.config['UPLOAD_PATH'], filename))
     return send_from_directory(os.path.join('../', app.config['UPLOAD_PATH']), filename)
 
+@app.route('/linkedin')
+def linkedin():
+    return redirect('https://linkedin.com/in/rylan-sturm/')
+
+@app.route('/github')
+def github():
+    return redirect('https://github.com/rylansturm')

@@ -4,9 +4,26 @@
 <div class="jumbotron hero hero-left contact-bg">
     <h1>Contact Me</h1>
 </div>
-<ul>
-    <li>Email: <a href="mailto:rylan.sturm@gmail.com">rylan.sturm@gmail.com</a></li>
-    <li>LinkedIn: <a href="https://www.linkedin.com/in/rylan-sturm/">https://www.linkedin.com/in/rylan-sturm/</a></li>
-    <li>GitHub: <a href="https://github.com/rylansturm">https://github.com/rylansturm</a></li>
-</ul>
+<p>
+    I am always interested in hearing about potential software engineering
+    opportunities. Feel free to reach out at any time via email or LinkedIn.
+</p>
+<div class="container" style="padding: 20px;">
+    <div class="row justify-content-center" style="padding: 20px;">
+        <div class="col-4">
+            Email:
+        </div>
+        <div class="col-4">
+            <a href="mailto:rylan.sturm@gmail.com">rylan.sturm@gmail.com</a>
+        </div>
+    </div>
+    <div class="row justify-content-center" style="padding: 20px;">
+        <div class="col-4">
+            <img src="static/LI-Logo.png" height="32px">
+        </div>
+        <div class="col-4">
+            <a href="{{ url_for('linkedin') }}">https://www.linkedin.com/in/rylan-sturm/</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

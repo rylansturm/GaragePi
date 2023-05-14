@@ -5,6 +5,9 @@
     justify-content: center;
     align-items: center;
     color: #fff;
+    border-radius: 15px;
+    padding: 5%;
+    margin: 10px 0px 25px 0px;
 }
 
 .hero-right {
@@ -26,6 +29,10 @@
 
 body, html {
     height: 100%;
+}
+
+.navbar-icon {
+    height: 25px;
 }
 
 .index-text {
@@ -54,7 +61,8 @@ body, html {
 
 .row {
     position: relative;
-    margin: 2px;
+    margin: 12px 0px 12px 0px;
+    align-items: center;
 }
 
 .portfolio-bg {
@@ -64,12 +72,12 @@ body, html {
 
 .pre-footer-wrapper {
     min-height: 100%;
-    padding-bottom: 100px;
+    padding-bottom: 150px;
 }
 
 footer {
     position: relative;
-    height: 100px;
+    height: 150px;
     bottom: 0;
     left: 0;
     right: 0;
