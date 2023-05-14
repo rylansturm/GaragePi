@@ -51,3 +51,11 @@ class UpdatePhoto(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     project_update_id = db.Column(db.Integer, db.ForeignKey('project_update.id'))
     filename = db.Column(db.String(20))
+
+class Visit(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    visitor_ip = db.Column(db.String(15))
+    page_to = db.Column(db.String(30))
+    page_from = db.Column(db.String(30))
+    def __repr__(self):
+        return f'<Visit to {self.page_to} from {self.page_from} by {self.visitor_ip}>'
