@@ -11,16 +11,15 @@
             {{ bootstrap.load_css() }}
         {% endblock %}
 
-        <title>Your page title</title>
+        <title>{% block title %}{% endblock %}</title>
         {% endblock %}
     </head>
     <body>
-        <!-- Your page content -->
+        <!-- content -->
         {% block navbar %}{% endblock %}
         {% block content %}{% endblock %}
 
         {% block scripts %}
-            <!-- Optional JavaScript -->
             {{ bootstrap.load_js() }}
         {% endblock %}
     </body>
