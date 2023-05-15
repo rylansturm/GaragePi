@@ -5,7 +5,7 @@
     <h1>Add Update Post for {{ project.name }}</h1>
     <div class="row">
         <div class="col-md-4">
-            {{ wtf.quick_form(form, enctype="multipart/form-data") }}
+            {{ wtf.render_form(form, enctype="multipart/form-data") }}
         </div>
     </div>
 {% endblock %}
