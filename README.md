@@ -27,3 +27,9 @@ Sensors. I should be able to read the current state of the garage.
 A minimum viable project is one where I can control my garage door
 via ssh when connected to WiFi. That just means Raspberry Pi, 
 Relay board, and a local bash script. Let's go.
+
+#### UPDATE 3/20/2023
+
+Minimum viable project is in place. I can now open and close garage doors
+by running the rust script with argument '1' or '2'. Only from local network.
+No monitoring system in place
