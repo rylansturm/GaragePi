@@ -6,6 +6,10 @@ A PCB has been designed that will sit on top of the Pi.
 It has been ordered and should be in place in the next week or so.
 Now on to designing the sensors.
 
+#### PCB Design
+
+![PCB Design](img/pcbv0.1.png)
+
 ## Specs
 
 #### Basic Requirements
