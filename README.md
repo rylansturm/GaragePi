@@ -1,8 +1,10 @@
 # GaragePi
 
-I'm looking at smartifying my garage door. I've seen other projects,
-and they look nice. It's more about making it myself than it is 
-about having it in place.
+#### UPDATE 6/26/2023
+
+A PCB has been designed that will sit on top of the Pi.
+It has been ordered and should be in place in the next week or so.
+Now on to designing the sensors.
 
 ## Specs
 
