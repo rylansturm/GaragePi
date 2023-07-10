@@ -8,11 +8,12 @@ const DOOR1SENSOR: u8 = 27;
 const DOOR2RELAY: u8 = 23;
 const DOOR2SENSOR: u8 = 17;
 
+mod commands;
+
 fn main() {
     let args: Vec<String> = env::args().collect();
     
-    if !check_args(&args) {
-    } else {
+    if check_args(&args) {
         let command = &args[1];
         let door = &args[2];
 
@@ -22,24 +23,22 @@ fn main() {
             "check" => check(door),
             _ => println!("invalid command \"{}\".", command.as_str()),
         }
-/*
-        let doornum: u8 = match &args[1] {
-            "1" => DOOR1RELAY,
-            "2" => DOOR2RELAY,
-            _ => 6,
-        };
-
-        let led = LED::new(doornum);
-        led.off();
-        println!("{doornum} on");
-        thread::sleep(Duration::from_millis(250));
-        led.on();
-        println!("{doornum} off");
-*/
     }
 }
 
 fn check_args(args: &Vec<String>) -> bool {
+    if args.len() != 3 {
+        println!("Command failed length constraint.\nCommand must be 2 arguments, ex. 'open 1'");
+        return false;
+    }
+    if !commands::COMMANDS.contains(&args[1].as_str()) {
+        println!("command failed first argument constraint.\nFirst argument must be 'open', 'close', or 'check'");
+        return false;
+    }
+    if !commands::DOORS.contains(&args[2].as_str()) {
+        println!("Command failed second argument constraint.\nSecond argument must be '1' or '2'");
+        return false;
+    }
     true
 }
 
