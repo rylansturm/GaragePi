@@ -1,14 +1,16 @@
 # GaragePi
 
-#### UPDATE 6/26/2023
+#### UPDATE 9/7/2023
 
-A PCB has been designed that will sit on top of the Pi.
-It has been ordered and should be in place in the next week or so.
-Now on to designing the sensors.
+About a month ago I got the case printed and everything mounted in my garage.
+The sensors are IR prox sensors that sit just above the door when closed, but
+the PCB can work with anything that has a 3.3V, GND, and Sensor pin configuration.
+The wiring is a CAT5 cable terminated with an aviation plug on the Pi side and
+screw terminals on the sensor side.
 
-#### PCB Design
-
-![PCB Design](img/pcbv0.1.png)
+I can access the Pi remotely via SSH. I am now working on setting up an MQTT 
+(Mosquitto) broker on my home network. Then I'll work on setting up an API and
+GUI on my public server so remote access is more user friendly.
 
 ## Specs
 
@@ -39,3 +41,13 @@ Relay board, and a local bash script. Let's go.
 Minimum viable project is in place. I can now open and close garage doors
 by running the rust script with argument '1' or '2'. Only from local network.
 No monitoring system in place
+
+#### UPDATE 6/26/2023
+
+A PCB has been designed that will sit on top of the Pi.
+It has been ordered and should be in place in the next week or so.
+Now on to designing the sensors.
+
+#### PCB Design
+
+![PCB Design](img/pcbv0.1.png)
