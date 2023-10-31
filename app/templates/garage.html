@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+<div class="garage-interface">
+    <!-- Door 1 -->
+    <div class="door-panel">
+        <h2>Door 1</h2>
+        <div class="door-status" id="door1Status">
+            (fetching...)
+        </div>
+        <button id="door1Toggle">Toggle Door 1</button>
+    </div>
+
+    <!-- Door 2 -->
+    <div class="door-panel">
+        <h2>Door 2</h2>
+        <div class="door-status" id="door2Status">
+            (fetching...)
+        </div>
+        <button id="door2Toggle">Toggle Door 2</button>
+    </div>
+</div>
+
+<style>
+    .garage-interface {
+        display: flex;
+        justify-content: space-between;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .door-panel {
+        flex: 1;
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin: 10px;
+        text-align: center;
+    }
+    .door-status {
+        margin: 20px 0;
+        font-size: 20px;
+        color: red;
+    }
+</style>
+
+<script>
+    window.onload = function() {
+        fetchStatus(1);
+        fetchStatus(2);
+    };
+
+    function fetchStatus(doorNumber) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', `/garage/${doorNumber}/check`, true);
+
+        xhr.onload = function() {
+            if (this.status === 200) {
+                const data = JSON.parse(this.responseText);
+                document.getElementById(`door${doorNumber}Status`).innerText = data.status;
+                if (data.status == "open") {
+                        document.getElementById(`door${doorNumber}Toggle`).innerText = `Close Door ${doorNumber}`
+                } else {
+                        document.getElementById(`door${doorNumber}Toggle`).innerText = `Open Door ${doorNumber}`
+                }
+            } else {
+                document.getElementById(`door${doorNumber}Status`).innerText = "Error fetching status";
+            }
+        };
+
+        xhr.onerror = function() {
+            document.getElementById(`door${doorNumber}Status`).innerText = "Error fetching status";
+        };
+
+        xhr.send();
+    }
+
+    document.getElementById("door1Toggle").addEventListener("click", function() {
+        toggleDoor(1);
+    });
+
+    document.getElementById("door2Toggle").addEventListener("click", function() {
+        toggleDoor(2);
+    });
+
+    function toggleDoor(doorNumber) {
+        door_status = document.getElementById(`door${doorNumber}Status`).innerText;
+        door_command = "invalid";
+        if (door_status == "open") {
+            door_command = "close";
+        } else if (door_status == "closed") {
+            door_command = "open";
+        }
+        document.getElementById(`door${doorNumber}Status`).innerText = "changing..."
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', `/garage/${doorNumber}/${door_command}`, true);
+
+        xhr.onload = function() {
+            if (this.status === 200) {
+                // Wait 3 seconds and then fetch the status
+                setTimeout(function() {
+                    fetchStatus(doorNumber);
+                }, 9000);
+            } else {
+                console.error("Failed to toggle the door:", this.statusText);
+            }
+        };
+
+        xhr.onerror = function() {
+            console.error("Request failed.");
+        };
+
+        xhr.send();
+    }
+</script>
+
+{% endblock %}
+

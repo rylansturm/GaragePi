@@ -1,5 +1,5 @@
 from flask import render_template, flash, redirect, url_for, request, abort, \
-        send_from_directory
+        send_from_directory, jsonify
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, ProjectForm, ProjectUpdateForm
@@ -150,6 +150,48 @@ def edit_update(proj_num, update_num):
         form.text.data = update.text
     return render_template('new_update.html', title='Modify Update', project=project, form=form)
 
+@app.route('/garage')
+@login_required
+def garage():
+    return render_template('garage.html', title='GaragePi')
+
+@app.route('/garage/<door_num>/<door_command>')
+@login_required
+def garage_toggle(door_num, door_command):
+    if door_command not in ['open', 'close']:
+        return jsonify({
+            'door': door_num,
+            'status': f'invalid command {door_command}'
+        })
+    if door_num in ['1', '2']:
+        try:
+            cmd = ['ssh', 'network-files-remote', f'~/.garage.sh {door_command} {door_num}']
+            result = subprocess.run(cmd)
+        except subprocess.CalledProcessError as e:
+            print(f'Command {command} failed with error:\n{e}')
+        except Exception as e:
+            print(f'Error occurred: {e}')
+        return jsonify({
+            'door': door_num,
+            'status': 'changing'
+        })
+
+@app.route('/garage/<door_num>/check')
+@login_required
+def garage_check(door_num):
+    if door_num in ['1', '2']:
+        try:
+            cmd = ['ssh', 'network-files-remote', f'~/.garage.sh check {door_num}']
+            result = subprocess.run(cmd, check=True, text=True, capture_output=True)
+        except subprocess.CalledProcessError as e:
+            print(f'Command {command} failed with error:\n{e}')
+        except Exception as e:
+            print(f'Error occurred: {e}')
+        return jsonify({
+            'door': door_num,
+            'status': result.stdout.split(' ')[-1].strip()
+        })
+
 @app.route('/uploads/<filename>')
 def upload(filename):
     print(os.path.join(app.config['UPLOAD_PATH'], filename))
@@ -172,11 +214,14 @@ def get_ip(req):
         return req.environ['HTTP_X_FORWARDED_FOR']
 
 def store_visit(request, page_to):
-    ip = get_ip(request)
-    page_from = request.args.get('page_from')
-    visit = Visit()
-    visit.visitor_ip = ip
-    visit.page_to = page_to
-    visit.page_from = page_from
-    db.session.add(visit)
-    db.session.commit()
+    try:
+        ip = get_ip(request)
+        page_from = request.args.get('page_from')
+        visit = Visit()
+        visit.visitor_ip = ip
+        visit.page_to = page_to
+        visit.page_from = page_from
+        db.session.add(visit)
+        db.session.commit()
+    except:
+        pass
